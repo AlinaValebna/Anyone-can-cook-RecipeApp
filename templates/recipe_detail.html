@@ -18,11 +18,15 @@
     <p><strong>Posted on:</strong> {{ recipe.date.strftime('%B %d, %Y') }}</p>
 
     <hr>
-    <h5>🧾 Ingredients</h5>
-    <p>{{ recipe.ingredients }}</p>
+<h5>📝 Ingredients</h5>
+<p>
+  {{ recipe.ingredients | replace('\n', '<br>') | safe }}
+</p>
 
-    <h5>👨‍🍳 Process</h5>
-    <p>{{ recipe.process }}</p>
+<h5>👩‍🍳 Process</h5>
+<p>
+  {{ recipe.process | replace('\n', '<br><br>') | safe }}
+</p>
 
     {% if recipe.source %}
     <p><strong>Source:</strong> <a href="{{ recipe.source }}" target="_blank">{{ recipe.source }}</a></p>
